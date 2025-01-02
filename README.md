@@ -105,5 +105,5 @@ This project is intended for educational purposes only. The author is not respon
 
 
 
-$\color{#a3a3a3}{Copyright (c)_2024_Stiimy}$
+$\color{#a3a3a3}{Copyright (c)%2024%Stiimy}$
 
