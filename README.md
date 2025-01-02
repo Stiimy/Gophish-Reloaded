@@ -1,6 +1,6 @@
 # Gophish-Reloaded
 
-![Version](https://img.shields.io/badge/version-1.0-purple)
+![Version](https://img.shields.io/badge/version-0.1-purple)
 ![License](https://img.shields.io/badge/license-MIT-darkred)
 ![Warning](https://img.shields.io/badge/Educational%20Purpose%20Only%20!!!-indigo)
 
@@ -26,39 +26,20 @@ cd Documents
 sudo apt install npm
 sudo npm install gulp gulp-cli -g 
 sudo apt update && apt install git
+git clone https://github.com/Stiimy/Gophish-Reloaded.git
+cd Gophish-Reloaded
 ```
-
----
-
-### **3. Build and configure**
+Check File Existence: 
 ```bash
-mkdir build
-cd build
-sudo git clone https://github.com/gophish/gophish.git
-cd gophish
-
-sudo npm install --only=dev
-sudo gulp
+ls -l ./gophish
 ```
-
-Apply specific code modifications:
+Check Execution Permissions:
 ```bash
-sudo sed -i 's/X-Contact/X-Contact/g' models/email_request_test.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/maillog.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/maillog_test.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/email_request.go
-sudo sed -i 's/X-Signature/X-Signature/g' webhook/webhook.go
-sudo sed -i 's/const ServerName = "gophish"/const ServerName = "IGNORE"/' config/config.go
-sudo sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "keyname"/g' models/campaign.go
+chmod -x ../gophish
 ```
-
-Build the project:
+Launch Gophish:
 ```bash
-go get -v && go build -v
-sudo apt-get update && sudo apt-get install --no-install-recommends -y jq libcap2-bin && sudo apt-get clean
-sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-sudo sed -i 's/127.0.0.1/0.0.0.0/g' config.json
-go build ./gophish
+sudo ./gophish
 ```
 
 ---
