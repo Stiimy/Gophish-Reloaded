@@ -1,6 +1,6 @@
 # Gophish-Reloaded
 
-![Version](https://img.shields.io/badge/version-1.0-purple)
+![Version](https://img.shields.io/badge/version-0.1-purple)
 ![License](https://img.shields.io/badge/license-MIT-darkred)
 ![Warning](https://img.shields.io/badge/Educational%20Purpose%20Only%20!!!-indigo)
 
