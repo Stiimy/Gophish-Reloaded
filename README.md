@@ -26,7 +26,7 @@ cd Documents
 sudo apt install npm
 sudo npm install gulp gulp-cli -g 
 sudo apt update && apt install git
-git clone https://github.com/Stiimy/Gophish-Reloaded.git
+git clone  -b main-clone https://github.com/Stiimy/Gophish-Reloaded.git
 cd Gophish-Reloaded
 ```
 Check File Existence: 
