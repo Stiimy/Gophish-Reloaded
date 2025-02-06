@@ -35,7 +35,7 @@ ls -l ./gophish
 ```
 Check Execution Permissions:
 ```bash
-chmod -x ../gophish
+chmod +x gophish
 ```
 Launch Gophish:
 ```bash
