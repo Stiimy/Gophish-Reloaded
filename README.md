@@ -33,7 +33,7 @@ sudo apt install npm
  
 sudo npm install gulp gulp-cli -g  
  
-sudo apt update && apt install git
+sudo apt update && sudo apt install git
 ```  
  
 Clone the Gophish repository:  
