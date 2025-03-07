@@ -23,6 +23,7 @@ sudo apt update && sudo apt upgrade -y
 Install the required dependencies:
 ```bash
 cd Documents
+sudo apt update && sudo apt install -y golang
 sudo apt install npm
 sudo npm install gulp gulp-cli -g 
 sudo apt update && apt install git
@@ -32,8 +33,6 @@ sudo apt update && apt install git
 
 ### **3. Build and configure**
 ```bash
-mkdir build
-cd build
 sudo git clone https://github.com/gophish/gophish.git
 cd gophish
 
