@@ -26,78 +26,107 @@ Install the required dependencies:
  
 ```bash
 cd Documents
- 
-sudo apt update && sudo apt install -y golang
- 
-sudo apt install npm
- 
+
+# Install Go using snap (apt package not available)
+sudo snap install go --classic
+
+# Install npm and gulp
+sudo apt install npm -y
+
 sudo npm install gulp gulp-cli -g  
- 
-sudo apt update && sudo apt install git
+
+# Install git
+sudo apt update && sudo apt install git -y
 ```  
  
 Clone the Gophish repository:  
  
 ```bash
 sudo git clone https://github.com/gophish/gophish.git
- 
+
 cd gophish
 ```  
  
 ---  
  
-### **3. Compilation and Configuration**  
+### **3. Fix Permissions**
+
+**IMPORTANT:** Change the ownership of the gophish directory to your user to avoid permission issues:
+
+```bash
+cd ..
+sudo chown -R $USER:$USER gophish
+cd gophish
+```
+
+---
+
+### **4. Compilation and Configuration**  
  
 Install project dependencies:  
  
 ```bash
-sudo npm install --only=dev
- 
-sudo gulp
+npm install --only=dev
+
+gulp
 ```  
  
 Apply specific code modifications:  
  
 ```bash
-sudo sed -i 's/X-Contact/X-Contact/g' models/email_request_test.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/maillog.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/maillog_test.go
-sudo sed -i 's/X-Contact/X-Contact/g' models/email_request.go
-sudo sed -i 's/X-Signature/X-Signature/g' webhook/webhook.go
-sudo sed -i 's/const ServerName = "gophish"/const ServerName = "IGNORE"/' config/config.go
-sudo sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "keyname"/g' models/campaign.go
+sed -i 's/X-Contact/X-Contact/g' models/email_request_test.go
+sed -i 's/X-Contact/X-Contact/g' models/maillog.go
+sed -i 's/X-Contact/X-Contact/g' models/maillog_test.go
+sed -i 's/X-Contact/X-Contact/g' models/email_request.go
+sed -i 's/X-Signature/X-Signature/g' webhook/webhook.go
+sed -i 's/const ServerName = "gophish"/const ServerName = "IGNORE"/' config/config.go
+sed -i 's/const RecipientParameter = "rid"/const RecipientParameter = "keyname"/g' models/campaign.go
 ```  
  
 Prepare the environment and compile:  
  
 ```bash
 go get -v && go build -v
- 
+
 sudo apt-get update && sudo apt-get install --no-install-recommends -y jq libcap2-bin && sudo apt-get clean
- 
+
 sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ```  
  
 Modify the configuration to allow remote access:  
  
 ```bash
-sudo sed -i 's/127.0.0.1/0.0.0.0/g' config.json
+sed -i 's/127.0.0.1/0.0.0.0/g' config.json
 ```  
  
 Add the directory as a safe repository for `git`:  
  
 ```bash
-git config --global --add safe.directory /home/keran/Documents/build/gophish
+git config --global --add safe.directory $(pwd)
 ```  
  
-Compile Gophish:  
+Final compilation:  
  
 ```bash
-sudo go build -v
+go build -v
 ```  
  
 ---  
  
+## ▶️ **Running Gophish**
+
+Start Gophish (without sudo for testing):
+
+```bash
+./gophish
+```
+
+**Note:** If you need to use privileged ports (like port 80), you can either:
+- Run with `sudo ./gophish`
+- Or change the ports in `config.json` to non-privileged ports (>1024)
+
+---
+
 ## 🔑 **Accessing the Gophish Interface**  
  
 1. Locate the generated username and password in the logs:  
@@ -109,10 +138,12 @@ time="2024-10-17T11:07:33+02:00" level=info msg="Please login with the username 
 2. Note the server startup URL:  
  
 ```  
-time="2024-10-17T11:07:33+02:00" level=info msg="Starting admin server at https://127.0.0.1:3333/"
+time="2024-10-17T11:07:33+02:00" level=info msg="Starting admin server at https://0.0.0.0:3333/"
 ```  
  
-3. Log in to the interface and start configuring your phishing campaigns.  
+3. Access the interface at `https://YOUR_IP:3333/` and log in with the credentials from step 1.
+
+4. Start configuring your phishing campaigns.  
  
 ---  
  
@@ -141,4 +172,3 @@ This project is for educational purposes only. The author is not responsible for
 ---  
  
 $ \color{#a3a3a3}{Copyright (c)2024Stiimy}$
-
