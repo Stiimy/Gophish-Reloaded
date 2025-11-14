@@ -1,6 +1,6 @@
 # Gophish-Reloaded  
  
-![Version](https://img.shields.io/badge/version-0.1-purple)  ![License](https://img.shields.io/badge/license-MIT-darkred)  ![Warning](https://img.shields.io/badge/Educational%20Purpose%20Only%20!!!-indigo)  
+![Version](https://img.shields.io/badge/version-0.2-purple)  ![License](https://img.shields.io/badge/license-MIT-darkred)  ![Warning](https://img.shields.io/badge/Educational%20Purpose%20Only%20!!!-indigo)  
  
 **Gophish-Reloaded** is an enhanced version of [Gophish](https://getgophish.com/) with additional features to simplify and improve phishing campaigns.  
  
