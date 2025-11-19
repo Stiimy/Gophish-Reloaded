@@ -96,7 +96,7 @@ sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 Modify the configuration to allow remote access:  
  
 ```bash
-sed -i 's/127.0.0.1/0.0.0.0/g' config.json
+sed -i 's/0.0.0.0/0.0.0.0/g' config.json
 ```  
  
 Add the directory as a safe repository for `git`:  
